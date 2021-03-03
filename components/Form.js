@@ -5,17 +5,23 @@ export default function Form({ text, setText }) {
   const [num, setNum] = useContext(InputContext);
   return (
     <div className="w-full p-3">
-      <label htmlFor="countForm">入力欄</label>
+      <div>
+        <label className="text-lg">記事タイトル</label>
+        <input type="text" className=" w-full bg-white p-2 mb-3 outline-none" />
+      </div>
+      <label htmlFor="countForm" className="text-lg">
+        記事入力欄
+      </label>
       <textarea
         id="countForm"
-        className="w-full bg-blue-100 h-5/6 p-3"
+        className="w-full bg-white h-4/6 p-3 outline-none"
         onChange={(e) => setText(e.target.value)}
         value={text}
       />
       <button
         onClick={() => setText("")}
         disabled={text === ""}
-        className="bg-blue-300 px-3 py-2"
+        className="bg-green-400 px-3 py-2 text-white rounded-md"
       >
         リセット
       </button>

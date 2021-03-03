@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { countTexts, countOnlyCode, sumOfAllTitles } from "../lib/wordCounts";
+import { darkModeContext } from "./Layout";
 
 export default function CountField({ text }) {
+  const darkMode = useContext(darkModeContext);
   const [price, setPrice] = useState(0);
   const [codePrice, setCodePrice] = useState(0);
   const [checkBox, setCheckBox] = useState(false);
@@ -27,13 +29,35 @@ export default function CountField({ text }) {
   const priceOfTotal = (text) => {
     return priceOnlyWords(text) + priceOnlyCodes(text);
   };
+  const darkH2Title = () => {
+    if (darkMode) {
+      return "text-white text-lg";
+    } else {
+      return "text-grey-300 text-lg";
+    }
+  };
+  const darkTableBackGround = () => {
+    if (darkMode) {
+      return "bg-purple-700  border-4 border-purple-700";
+    } else {
+      return "bg-blue-500 border-4 border-blue-500";
+    }
+  };
+  const darkTexts = () => {
+    if (darkMode) {
+      return "text-white pl-2";
+    } else {
+      return "text-grey-300 pl-2";
+    }
+  };
+
   return (
     <div className="w-full p-3">
-      <h2 className="text-lg">集計欄</h2>
+      <h2 className={darkH2Title()}>集計欄</h2>
       <div className="mb-2">
         <table className="min-w-full table-auto">
           <thead className="justify-between">
-            <tr className=" bg-green-400">
+            <tr className={darkTableBackGround()}>
               <th className="py-2">
                 <span className="text-white">タイプ</span>
               </th>
@@ -106,49 +130,37 @@ export default function CountField({ text }) {
           </tbody>
         </table>
       </div>
-      <div className="mb-2">
+      <div className="mb-10">
         <input
           type="checkbox"
           onChange={(e) => setCheckBox(e.target.checked)}
         />
-        見出しの文字をカウントする
+        <span className={darkTexts()}>見出しの文字をカウントする</span>
       </div>
-      {/* <table className="min-w-full table-auto">
-        <thead className="justify-between">
-          <tr className="bg-gray-400">
-            <th className="py-2 w-1/2">
-              <span className="text-gray-300">見出しタイプ</span>
-            </th>
-            <th className="w-1/2">
-              <span className="text-gray-300">文字数</span>
-            </th>
-          </tr>
-        </thead>
-        <tbody className="bg-gray-200">
-          <tr className="bg-white border-4 border-gray-200">
-            <td className="text-center"># 見出し1</td>
-            <td className="text-right"> {sumOfH1Title(text)}</td>
-          </tr>
-          <tr className="bg-white border-4 border-gray-200">
-            <td className="text-center">## 見出し2</td>
-            <td className="text-right"> {sumOfH2Title(text)}</td>
-          </tr>
-          <tr className="bg-white border-4 border-gray-200">
-            <td className="text-center">### 見出し3</td>
-            <td className="text-right"> {sumOfH3Title(text)}</td>
-          </tr>
-          <tr className="bg-white border-4 border-gray-200">
-            <td className="text-center">#### 見出し4</td>
-            <td className="text-right"> {sumOfH4Title(text)}</td>
-          </tr>
-        </tbody>
-      </table> */}
-      <h2 className="text-lg">できること</h2>
+      <h2 className={darkH2Title()}>このアプリの特徴</h2>
       <div className="bg-white w-full h-1/4 p-2">
         <ul>
-          <li>1.マークダウン形式で書かれた文字をカウントできます。</li>
-          <li>2.コードを含んだ記事のカウントも可能です。</li>
-          <li>3.文字のタイプによる単価の違いも計算可能です。</li>
+          <li>1.動作がサクサク！変更が即反映されます。</li>
+          <li>
+            2.見出しを自動で判別！
+            <br />
+            （注：ただし##のように、マークダウン形式で書かれたものに限ります。）
+          </li>
+          <li>
+            3.プログラミングのコードのみの文字数もカウント可能！
+            <br />
+            プログラミングに関する記事を書くライターに最適です。
+          </li>
+          <li>
+            4.文字単価の違いにも対応可能！
+            <br />
+            通常の文字単価は2円だけど、コードは0.5円のように文字によって単価が違う場合に最適です。
+          </li>
+          <li>
+            5.もちろん無料で利用可能！
+            <br />
+            文字数のカウントは、お金をかけずにさっさと楽しましょう！
+          </li>
         </ul>
       </div>
     </div>

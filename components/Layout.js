@@ -13,17 +13,17 @@ export default function Layout({ children, title = "Let's count!!" }) {
             <div className="flex space-x-4">
               <Link href="/">
                 <a className="text-grey-300 hover:bg-gray-700 px-3 py-2 rounded">
-                  Home
+                  ホーム
                 </a>
               </Link>
               <Link href="/blog-page">
                 <a className="text-grey-300 hover:bg-gray-700 px-3 py-2 rounded">
-                  Blog
+                  マークダウン
                 </a>
               </Link>
               <Link href="/contact-page">
                 <a className="text-grey-300 hover:bg-gray-700 px-3 py-2 rounded">
-                  Contact
+                  お問い合わせ
                 </a>
               </Link>
             </div>

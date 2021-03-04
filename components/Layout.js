@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
+import AdSense from "react-adsense";
 
 export const darkModeContext = React.createContext();
 
@@ -11,6 +12,10 @@ export default function Layout({ children, title = "Let's count!!" }) {
     <div className="flex justify-center items-center flex-col min-h-screen text-gray-600 text-sm font-mono text-base">
       <Head>
         <title>{title}</title>
+        <script
+          async
+          src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+        ></script>
       </Head>
       <header className="w-full">
         <nav className={"w-full " + (darkMode ? "bg-gray-700" : "bg-white")}>
@@ -28,7 +33,7 @@ export default function Layout({ children, title = "Let's count!!" }) {
                   ホーム
                 </a>
               </Link>
-              <Link href="/markdown-page">
+              {/* <Link href="/markdown-page">
                 <a
                   className={
                     "hover:bg-gray-200 px-3 py-2 rounded " +
@@ -39,9 +44,8 @@ export default function Layout({ children, title = "Let's count!!" }) {
                 >
                   Markdown記法
                 </a>
-              </Link>
+              </Link> */}
             </div>
-            {/* ダークモード切り替え */}
             <div className="flex ml-auto px-5">
               {(() => {
                 if (!darkMode) {
@@ -133,6 +137,8 @@ export default function Layout({ children, title = "Let's count!!" }) {
           {children}
         </darkModeContext.Provider>
       </main>
+
+      {/* <AdSense.Google client="ca-pub-7292810486004926" slot="7806394673" /> */}
 
       <footer
         className={

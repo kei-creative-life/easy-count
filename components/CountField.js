@@ -138,7 +138,7 @@ export default function CountField({ text }) {
         <span className={darkTexts()}>見出しの文字をカウントする</span>
       </div>
       <h2 className={darkH2Title()}>このアプリの特徴</h2>
-      <div className="bg-white w-full h-1/4 p-2">
+      <div className="bg-white w-full h-2/4 p-2">
         <ul>
           <li>1.動作がサクサク！変更が即反映されます。</li>
           <li>

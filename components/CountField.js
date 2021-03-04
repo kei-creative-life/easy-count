@@ -29,35 +29,22 @@ export default function CountField({ text }) {
   const priceOfTotal = (text) => {
     return priceOnlyWords(text) + priceOnlyCodes(text);
   };
-  const darkH2Title = () => {
-    if (darkMode) {
-      return "text-white text-lg";
-    } else {
-      return "text-grey-300 text-lg";
-    }
-  };
-  const darkTableBackGround = () => {
-    if (darkMode) {
-      return "bg-purple-700  border-4 border-purple-700";
-    } else {
-      return "bg-blue-500 border-4 border-blue-500";
-    }
-  };
-  const darkTexts = () => {
-    if (darkMode) {
-      return "text-white pl-2";
-    } else {
-      return "text-grey-300 pl-2";
-    }
-  };
-
   return (
     <div className="w-full p-3">
-      <h2 className={darkH2Title()}>集計欄</h2>
+      <h2 className={"text-lg " + (darkMode ? "text-white " : "text-grey-300")}>
+        集計欄
+      </h2>
       <div className="mb-2">
         <table className="min-w-full table-auto">
           <thead className="justify-between">
-            <tr className={darkTableBackGround()}>
+            <tr
+              className={
+                "border-4 " +
+                (darkMode
+                  ? "bg-blue-800 border-blue-800"
+                  : "bg-blue-500 border-blue-500")
+              }
+            >
               <th className="py-2">
                 <span className="text-white">タイプ</span>
               </th>
@@ -135,10 +122,21 @@ export default function CountField({ text }) {
           type="checkbox"
           onChange={(e) => setCheckBox(e.target.checked)}
         />
-        <span className={darkTexts()}>見出しの文字をカウントする</span>
+        <span
+          className={"pl-2 " + (darkMode ? "text-white " : "text-grey-300")}
+        >
+          見出しの文字をカウントする
+        </span>
       </div>
-      <h2 className={darkH2Title()}>このアプリの特徴</h2>
-      <div className="bg-white w-full h-2/4 p-2">
+      <h2 className={"text-lg " + (darkMode ? "text-white " : "text-grey-300")}>
+        このアプリの特徴
+      </h2>
+      <div
+        className={
+          "w-full h-2/4 p-2 overflow-y-scroll text-lg " +
+          (darkMode ? "bg-gray-700 text-white " : "bg-white")
+        }
+      >
         <ul>
           <li>1.動作がサクサク！変更が即反映されます。</li>
           <li>

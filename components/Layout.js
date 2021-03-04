@@ -6,69 +6,63 @@ export const darkModeContext = React.createContext();
 
 export default function Layout({ children, title = "Let's count!!" }) {
   const [darkMode, setDarkMode] = useState(false);
-  const darkNavigationBackGround = () => {
-    if (darkMode) {
-      return "bg-gray-700 w-screen";
-    } else {
-      return "bg-white w-screen";
-    }
-  };
-  const darkFooterBackGround = () => {
-    if (darkMode) {
-      return "bg-gray-700 w-full h-12 flex justify-center items-center text-white";
-    } else {
-      return "w-full h-12 flex justify-center items-center";
-    }
-  };
-  const darkBackGround = () => {
-    if (darkMode) {
-      return "bg-gray-800 flex flex-1 justify-center w-screen px-2";
-    } else {
-      return "bg-gray-100 flex flex-1 justify-center w-screen px-2";
-    }
-  };
-  const darkNavigationFonts = () => {
-    if (darkMode) {
-      return "text-white hover:bg-gray-700 px-3 py-2 rounded";
-    } else {
-      return "text-grey-300 hover:bg-gray-700 px-3 py-2 rounded";
-    }
-  };
+
   return (
     <div className="flex justify-center items-center flex-col min-h-screen text-gray-600 text-sm font-mono text-base">
       <Head>
         <title>{title}</title>
       </Head>
-      <header>
-        <nav className={darkNavigationBackGround()}>
-          <div className="flex items-center pl-8 h-14">
-            <div className="flex space-x-4">
+      <header className="w-full">
+        <nav className={"w-full " + (darkMode ? "bg-gray-700" : "bg-white")}>
+          <div className="flex items-center w-full h-14">
+            <div className="flex space-x-4 px-2">
               <Link href="/">
-                <a className={darkNavigationFonts()}>ホーム</a>
+                <a
+                  className={
+                    "px-3 py-2 rounded " +
+                    (darkMode
+                      ? "hover:bg-gray-500 text-white"
+                      : "hover:bg-gray-200 text-grey-300")
+                  }
+                >
+                  ホーム
+                </a>
+              </Link>
+              <Link href="/markdown-page">
+                <a
+                  className={
+                    "hover:bg-gray-200 px-3 py-2 rounded " +
+                    (darkMode
+                      ? "hover:bg-gray-500 text-white"
+                      : "hover:bg-gray-200 text-grey-300")
+                  }
+                >
+                  Markdown記法
+                </a>
               </Link>
             </div>
             {/* ダークモード切り替え */}
-            <div class="flex ml-auto px-5">
+            <div className="flex ml-auto px-5">
               {(() => {
                 if (!darkMode) {
                   return (
                     <div className="flex items-center">
                       <label
-                        for="unchecked"
-                        class=" inline-flex items-center cursor-pointer"
+                        htmlFor="unchecked"
+                        className=" inline-flex items-center cursor-pointer"
                       >
-                        <span class="relative">
-                          <span class="block w-10 h-6 bg-gray-400 rounded-full shadow-inner"></span>
-                          <span class="absolute block w-4 h-4 mt-1 ml-1 bg-white rounded-full shadow inset-y-0 left-0 focus-within:shadow-outline transition-transform duration-300 ease-in-out">
+                        <span className="relative">
+                          <span className="block w-10 h-6 bg-gray-400 rounded-full shadow-inner"></span>
+                          <span className="absolute block w-4 h-4 mt-1 ml-1 bg-white rounded-full shadow inset-y-0 left-0 focus-within:shadow-outline transition-transform duration-300 ease-in-out">
                             <input
                               id="unchecked"
                               type="checkbox"
-                              class="absolute opacity-0 w-0 h-0"
+                              className="absolute opacity-0 w-0 h-0"
                               onChange={(e) => setDarkMode(e.target.checked)}
                             />
                           </span>
                         </span>
-                        <span class="ml-3 text-sm">通常モード</span>
+                        <span className="ml-3 text-sm">ダークモード</span>
                       </label>
                       <span className="pl-2 pb-1">
                         <svg
@@ -92,22 +86,22 @@ export default function Layout({ children, title = "Let's count!!" }) {
                   return (
                     <div className="flex items-center">
                       <label
-                        for="checked"
-                        class="inline-flex items-center cursor-pointer"
+                        htmlFor="checked"
+                        className="inline-flex items-center cursor-pointer"
                       >
-                        <span class="relative">
-                          <span class="block w-10 h-6 bg-gray-400 rounded-full shadow-inner"></span>
-                          <span class="absolute block w-4 h-4 mt-1 ml-1 rounded-full shadow inset-y-0 left-0 focus-within:shadow-outline transition-transform duration-300 ease-in-out bg-purple-600 transform translate-x-full">
+                        <span className="relative">
+                          <span className="block w-10 h-6 bg-gray-400 rounded-full shadow-inner"></span>
+                          <span className="absolute block w-4 h-4 mt-1 ml-1 rounded-full shadow inset-y-0 left-0 focus-within:shadow-outline transition-transform duration-300 ease-in-out bg-purple-600 transform translate-x-full">
                             <input
                               id="checked"
                               type="checkbox"
-                              class="absolute opacity-0 w-0 h-0"
+                              className="absolute opacity-0 w-0 h-0"
                               onChange={(e) => setDarkMode(e.target.checked)}
                             />
                           </span>
                         </span>
-                        <span class="ml-3 text-sm text-white">
-                          ダークモード
+                        <span className="ml-3 text-sm text-white">
+                          通常モード
                         </span>
                       </label>
                       <span className="pl-2 pb-1">
@@ -129,13 +123,23 @@ export default function Layout({ children, title = "Let's count!!" }) {
         </nav>
       </header>
 
-      <main className={darkBackGround()}>
+      <main
+        className={
+          "flex flex-1 justify-center px-2 w-full " +
+          (darkMode ? "bg-gray-800" : "bg-gray-100")
+        }
+      >
         <darkModeContext.Provider value={darkMode}>
           {children}
         </darkModeContext.Provider>
       </main>
 
-      <footer className={darkFooterBackGround()}>
+      <footer
+        className={
+          "w-full h-12 flex justify-center items-center " +
+          (darkMode ? "bg-gray-700 text-white" : "bg-white")
+        }
+      >
         <p>Created By Kengo Yamamoto on 2021</p>
       </footer>
     </div>

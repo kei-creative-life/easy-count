@@ -20,19 +20,22 @@ export default function Layout({ children, title = "Let's count!!" }) {
       <header className="w-full">
         <nav className={"w-full " + (darkMode ? "bg-gray-700" : "bg-white")}>
           <div className="flex items-center w-full h-14">
-            <div className="flex space-x-4 px-2">
+            <div className="flex items-center space-x-4 px-2">
               <Link href="/">
                 <a
                   className={
-                    "px-3 py-2 rounded " +
+                    "px-3 py-2 rounded text-3xl " +
                     (darkMode
                       ? "hover:bg-gray-500 text-white"
                       : "hover:bg-gray-200 text-grey-300")
                   }
                 >
-                  ホーム
+                  Zubora
                 </a>
               </Link>
+              <span className={darkMode ? "text-white" : "text-grey-300"}>
+                ライターのための文字数カウントアプリ
+              </span>
               {/* <Link href="/markdown-page">
                 <a
                   className={
@@ -95,7 +98,7 @@ export default function Layout({ children, title = "Let's count!!" }) {
                       >
                         <span className="relative">
                           <span className="block w-10 h-6 bg-gray-400 rounded-full shadow-inner"></span>
-                          <span className="absolute block w-4 h-4 mt-1 ml-1 rounded-full shadow inset-y-0 left-0 focus-within:shadow-outline transition-transform duration-300 ease-in-out bg-purple-600 transform translate-x-full">
+                          <span className="absolute block w-4 h-4 mt-1 ml-1 rounded-full shadow inset-y-0 left-0 focus-within:shadow-outline transition-transform duration-300 ease-in-out bg-blue-900 transform translate-x-full">
                             <input
                               id="checked"
                               type="checkbox"

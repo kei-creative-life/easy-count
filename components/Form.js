@@ -3,7 +3,7 @@ import { darkModeContext } from "./Layout";
 
 export default function Form({ text, setText }) {
   const darkMode = useContext(darkModeContext);
-  console.log(darkMode)
+  console.log(darkMode);
   return (
     <div className="w-full p-3">
       <div>
@@ -37,7 +37,7 @@ export default function Form({ text, setText }) {
         disabled={text === ""}
         className={
           "mt-3 px-3 py-2 text-white rounded-md " +
-          (darkMode ? "bg-blue-800" : "bg-blue-500")
+          (darkMode ? "bg-blue-900" : "bg-blue-500")
         }
       >
         リセット

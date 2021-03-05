@@ -1,6 +1,7 @@
 import { useState, useContext } from "react";
 import { countTexts, countOnlyCode, sumOfAllTitles } from "../lib/wordCounts";
 import { darkModeContext } from "./Layout";
+import AppDetail from "./AppDetail";
 
 export default function CountField({ text }) {
   const darkMode = useContext(darkModeContext);
@@ -41,7 +42,7 @@ export default function CountField({ text }) {
               className={
                 "border-4 " +
                 (darkMode
-                  ? "bg-blue-800 border-blue-800"
+                  ? "bg-blue-900 border-blue-900"
                   : "bg-blue-500 border-blue-500")
               }
             >
@@ -60,7 +61,14 @@ export default function CountField({ text }) {
             </tr>
           </thead>
           <tbody className="bg-gray-200">
-            <tr className="bg-white border-4 border-gray-200">
+            <tr
+              className={
+                "border-4  " +
+                (darkMode
+                  ? "bg-gray-700 text-blue-400 border-gray-700"
+                  : "bg-white border-gray-200")
+              }
+            >
               <td className="text-center py-2">文字のみ</td>
               <td className="text-right">
                 {(() => {
@@ -75,7 +83,10 @@ export default function CountField({ text }) {
               </td>
               <td className="text-right">
                 <input
-                  className="outline-none text-right"
+                  className={
+                    "outline-none text-right " +
+                    (darkMode ? "bg-gray-700" : "bg-white")
+                  }
                   value={price}
                   min="0"
                   max="255"
@@ -89,7 +100,14 @@ export default function CountField({ text }) {
                 <span>{priceOnlyWords(text)}</span>
               </td>
             </tr>
-            <tr className="bg-white border-4 border-gray-200">
+            <tr
+              className={
+                "border-4  " +
+                (darkMode
+                  ? "bg-gray-700 text-blue-400 border-gray-700"
+                  : "bg-white border-gray-200")
+              }
+            >
               <td className="text-center py-2">コードのみ</td>
               <td className="text-right">{countOnlyCode(text)}</td>
               <td className="text-right">
@@ -97,7 +115,10 @@ export default function CountField({ text }) {
                   value={codePrice}
                   min="0"
                   max="255"
-                  className="outline-none text-right"
+                  className={
+                    "outline-none text-right " +
+                    (darkMode ? "bg-gray-700" : "bg-white")
+                  }
                   id="unit-code-price"
                   type="number"
                   placeholder="〇〇円/文字"
@@ -106,7 +127,14 @@ export default function CountField({ text }) {
               </td>
               <td className=" text-right">{priceOnlyCodes(text)}</td>
             </tr>
-            <tr className="bg-white border-4 border-gray-200">
+            <tr
+              className={
+                "border-4  " +
+                (darkMode
+                  ? "bg-gray-700 text-blue-400 border-gray-700"
+                  : "bg-white border-gray-200")
+              }
+            >
               <td className="text-center py-2">文字+コード</td>
               <td className="text-right">
                 {countsOfAllWords(text) + countOnlyCode(text)}
@@ -128,39 +156,7 @@ export default function CountField({ text }) {
           見出しの文字をカウントする
         </span>
       </div>
-      <h2 className={"text-lg " + (darkMode ? "text-white " : "text-grey-300")}>
-        このアプリの特徴
-      </h2>
-      <div
-        className={
-          "w-full h-2/4 p-2 overflow-y-scroll text-lg " +
-          (darkMode ? "bg-gray-700 text-white " : "bg-white")
-        }
-      >
-        <ul>
-          <li>1.動作がサクサク！変更が即反映されます。</li>
-          <li>
-            2.見出しを自動で判別！
-            <br />
-            （注：ただし##のように、マークダウン形式で書かれたものに限ります。）
-          </li>
-          <li>
-            3.プログラミングのコードのみの文字数もカウント可能！
-            <br />
-            プログラミングに関する記事を書くライターに最適です。
-          </li>
-          <li>
-            4.文字単価の違いにも対応可能！
-            <br />
-            通常の文字単価は2円だけど、コードは0.5円のように文字によって単価が違う場合に最適です。
-          </li>
-          <li>
-            5.もちろん無料で利用可能！
-            <br />
-            文字数のカウントは、お金をかけずにさっさと楽しましょう！
-          </li>
-        </ul>
-      </div>
+      {/* <AppDetail darkMode={darkMode} /> */}
     </div>
   );
 }

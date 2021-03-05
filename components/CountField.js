@@ -1,7 +1,13 @@
 import { useState, useContext } from "react";
-import { countTexts, countOnlyCode, sumOfAllTitles } from "../lib/wordCounts";
+import {
+  countTexts,
+  countOnlyCode,
+  sumOfAllTitles,
+  imageParts,
+} from "../lib/wordCounts";
 import { darkModeContext } from "./Layout";
 import AppDetail from "./AppDetail";
+import CountRules from "./CountRules";
 
 export default function CountField({ text }) {
   const darkMode = useContext(darkModeContext);
@@ -30,6 +36,7 @@ export default function CountField({ text }) {
   const priceOfTotal = (text) => {
     return priceOnlyWords(text) + priceOnlyCodes(text);
   };
+  imageParts(text);
   return (
     <div className="w-full p-3">
       <h2 className={"text-lg " + (darkMode ? "text-white " : "text-grey-300")}>
@@ -113,6 +120,7 @@ export default function CountField({ text }) {
               <td className="text-right">
                 <input
                   value={codePrice}
+                  step="0.1"
                   min="0"
                   max="255"
                   className={
@@ -157,6 +165,7 @@ export default function CountField({ text }) {
         </span>
       </div>
       {/* <AppDetail darkMode={darkMode} /> */}
+      <CountRules darkMode={darkMode} />
     </div>
   );
 }

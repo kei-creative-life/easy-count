@@ -3,7 +3,6 @@ import { darkModeContext } from "./Layout";
 
 export default function Form({ text, setText }) {
   const darkMode = useContext(darkModeContext);
-  console.log(darkMode);
   return (
     <div className="w-full p-3">
       <div>
@@ -14,6 +13,7 @@ export default function Form({ text, setText }) {
         </h2>
         <input
           type="text"
+          placeholder="文字数カウントのストレスから解放されよう！"
           className={
             " w-full p-2 mb-3 outline-none " +
             (darkMode ? "bg-gray-700 text-blue-400" : "bg-white")
@@ -31,6 +31,7 @@ export default function Form({ text, setText }) {
         }
         onChange={(e) => setText(e.target.value)}
         value={text}
+        placeholder="## Zuboraとは&#13;&#10;Zuboraとは、**マークダウン形式**で書かれた文章に特化した文字数カウントサービスです。普段から文字のカウントを行うwebライター様に最適です。"
       />
       <button
         onClick={() => setText("")}

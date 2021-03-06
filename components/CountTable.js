@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { countTexts, countOnlyCode, sumOfAllTitles } from "../lib/wordCounts";
-// import CodeExplanation from "./CodeExplanation";
 
 export default function CountTable({
   darkMode,
   checkBox,
   text,
   price,
+  setPrice,
   codePrice,
+  setCodePrice,
   setCheckBox,
 }) {
   const [displayExplanation, setDisplayExplanation] = useState(false);
@@ -48,16 +49,20 @@ export default function CountTable({
               }
             >
               <th className="py-2">
-                <span className="text-xs text-white">タイプ</span>
+                <span className="text-xs md:text-base text-white">タイプ</span>
               </th>
               <th className="w-1/5">
-                <span className="text-xs text-white">文字数</span>
+                <span className="text-xs md:text-base text-white">文字数</span>
               </th>
               <th className="w-1/5">
-                <span className="text-xs text-white">文字単価</span>
+                <span className="text-xs md:text-base text-white">
+                  文字単価
+                </span>
               </th>
               <th className="w-1/5">
-                <span className="text-xs text-white">合計金額</span>
+                <span className="text-xs md:text-base text-white">
+                  合計金額
+                </span>
               </th>
             </tr>
           </thead>

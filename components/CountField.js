@@ -22,7 +22,9 @@ export default function CountField({ text }) {
         checkBox={checkBox}
         text={text}
         price={price}
+        setPrice={setPrice}
         codePrice={codePrice}
+        setCodePrice={setCodePrice}
         setCheckBox={setCheckBox}
       />
       <CountRules darkMode={darkMode} />

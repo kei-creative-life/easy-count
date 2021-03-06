@@ -33,21 +33,14 @@ export default function Layout({ children, title = "Let's count!!" }) {
                   Zubora
                 </a>
               </Link>
-              <span className={darkMode ? "text-white" : "text-grey-300"}>
+              <span
+                className={
+                  "hidden md:block " +
+                  (darkMode ? "text-white" : "text-grey-300")
+                }
+              >
                 ライターのための文字数カウントアプリ
               </span>
-              {/* <Link href="/markdown-page">
-                <a
-                  className={
-                    "hover:bg-gray-200 px-3 py-2 rounded " +
-                    (darkMode
-                      ? "hover:bg-gray-500 text-white"
-                      : "hover:bg-gray-200 text-grey-300")
-                  }
-                >
-                  Markdown記法
-                </a>
-              </Link> */}
             </div>
             <div className="flex ml-auto px-5">
               {(() => {
@@ -69,7 +62,9 @@ export default function Layout({ children, title = "Let's count!!" }) {
                             />
                           </span>
                         </span>
-                        <span className="ml-3 text-sm">ダークモード</span>
+                        <span className="hidden md:block ml-3 text-sm">
+                          ダークモード
+                        </span>
                       </label>
                       <span className="pl-2 pb-1">
                         <svg
@@ -107,7 +102,7 @@ export default function Layout({ children, title = "Let's count!!" }) {
                             />
                           </span>
                         </span>
-                        <span className="ml-3 text-sm text-white">
+                        <span className="hidden md:block ml-3 text-sm text-white">
                           通常モード
                         </span>
                       </label>
@@ -132,7 +127,7 @@ export default function Layout({ children, title = "Let's count!!" }) {
 
       <main
         className={
-          "flex flex-1 justify-center px-2 w-full " +
+          "md:flex flex-1 justify-center px-2 w-full " +
           (darkMode ? "bg-gray-800" : "bg-gray-100")
         }
       >
@@ -145,7 +140,7 @@ export default function Layout({ children, title = "Let's count!!" }) {
 
       <footer
         className={
-          "w-full h-12 flex justify-center items-center " +
+          "text-sm w-full h-12 flex justify-center items-center " +
           (darkMode ? "bg-gray-700 text-white" : "bg-white")
         }
       >

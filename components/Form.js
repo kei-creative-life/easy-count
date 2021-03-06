@@ -7,7 +7,9 @@ export default function Form({ text, setText }) {
     <div className="w-full p-3">
       <div>
         <h2
-          className={"text-lg " + (darkMode ? "text-white " : "text-grey-300")}
+          className={
+            "md:text-lg " + (darkMode ? "text-white " : "text-grey-300")
+          }
         >
           記事タイトル
         </h2>
@@ -15,18 +17,20 @@ export default function Form({ text, setText }) {
           type="text"
           placeholder="文字数カウントのストレスから解放されよう！"
           className={
-            " w-full p-2 mb-3 outline-none " +
+            "text-sm md:text-base w-full p-2 mb-3 outline-none " +
             (darkMode ? "bg-gray-700 text-blue-400" : "bg-white")
           }
         />
       </div>
-      <h2 className={"text-lg " + (darkMode ? "text-white " : "text-grey-300")}>
+      <h2
+        className={"md:text-lg " + (darkMode ? "text-white " : "text-grey-300")}
+      >
         記事入力欄
       </h2>
       <textarea
         id="countForm"
         className={
-          "w-full h-4/6 p-3 outline-none " +
+          "text-sm md:text-base w-full h-4/6 p-3 outline-none " +
           (darkMode ? "bg-gray-700 text-blue-400" : "bg-white")
         }
         onChange={(e) => setText(e.target.value)}
@@ -37,7 +41,7 @@ export default function Form({ text, setText }) {
         onClick={() => setText("")}
         disabled={text === ""}
         className={
-          "mt-3 px-3 py-2 text-white rounded-md " +
+          "text-sm md:text-base mt-3 px-3 py-2 text-white rounded-md " +
           (darkMode ? "bg-blue-900" : "bg-blue-500")
         }
       >

@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { countTexts, countOnlyCode, sumOfAllTitles } from "../lib/wordCounts";
-// import CodeExplanation from "./CodeExplanation";
 
 export default function CountTable({
   darkMode,
   checkBox,
   text,
   price,
+  setPrice,
   codePrice,
+  setCodePrice,
   setCheckBox,
 }) {
   const [displayExplanation, setDisplayExplanation] = useState(false);
@@ -48,16 +49,20 @@ export default function CountTable({
               }
             >
               <th className="py-2">
-                <span className="text-xs text-white">タイプ</span>
+                <span className="text-xs md:text-base text-white">タイプ</span>
               </th>
               <th className="w-1/5">
-                <span className="text-xs text-white">文字数</span>
+                <span className="text-xs md:text-base text-white">文字数</span>
               </th>
               <th className="w-1/5">
-                <span className="text-xs text-white">文字単価</span>
+                <span className="text-xs md:text-base text-white">
+                  文字単価
+                </span>
               </th>
               <th className="w-1/5">
-                <span className="text-xs text-white">合計金額</span>
+                <span className="text-xs md:text-base text-white">
+                  合計金額
+                </span>
               </th>
             </tr>
           </thead>
@@ -115,14 +120,21 @@ export default function CountTable({
                 <div className="flex relative">
                   <div
                     className={
-                      "text-sm rounded-md bg-opacity-90 absolute top-2/4 text-left w-48 right-full bg-gray-900 p-3 " +
-                      (displayExplanation ? "display" : "hidden")
+                      "text-sm rounded-md bg-opacity-90 absolute top-2/4 text-left w-48 right-full p-3 " +
+                      (displayExplanation ? "display" : "hidden") +
+                      " " +
+                      (darkMode ? "bg-gray-900" : "bg-gray-300")
                     }
                   >
                     <p>
                       マークダウン形式で書かれたプログラミングコードを指します。
                     </p>
-                    <div className="hidden md:block bg-opacity-90 bg-gray-700 p-2 mt-3">
+                    <div
+                      className={
+                        "hidden md:block bg-opacity-90  p-2 mt-3 " +
+                        (darkMode ? "bg-gray-700" : "bg-gray-100")
+                      }
+                    >
                       ```Ruby
                       <br />
                       &lt;h2&gt;見出し2です。&lt;h2&gt;

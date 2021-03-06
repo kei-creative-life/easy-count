@@ -12,7 +12,9 @@ export default function CountField({ text }) {
 
   return (
     <div className="w-full p-3">
-      <h2 className={"text-lg " + (darkMode ? "text-white " : "text-grey-300")}>
+      <h2
+        className={"md:text-lg " + (darkMode ? "text-white " : "text-grey-300")}
+      >
         集計欄
       </h2>
       <CountTable
@@ -21,6 +23,7 @@ export default function CountField({ text }) {
         text={text}
         price={price}
         codePrice={codePrice}
+        setCheckBox={setCheckBox}
       />
       <CountRules darkMode={darkMode} />
     </div>

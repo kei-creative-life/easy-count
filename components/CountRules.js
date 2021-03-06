@@ -1,12 +1,14 @@
 export default function CountRules({ darkMode }) {
   return (
     <>
-      <h2 className={"text-lg " + (darkMode ? "text-white " : "text-grey-300")}>
+      <h2
+        className={"md:text-lg " + (darkMode ? "text-white " : "text-grey-300")}
+      >
         文字数カウントのルール
       </h2>
       <div
         className={
-          "w-full p-2  text-base mb-5 " +
+          "w-full p-2  text-sm md:text-base mb-5 " +
           (darkMode ? "bg-gray-700 text-white " : "bg-white")
         }
       >
@@ -19,7 +21,7 @@ export default function CountRules({ darkMode }) {
       </div>
       <div
         className={
-          "w-full p-2  text-base mb-5 " +
+          "w-full p-2  text-sm md:text-base mb-5 " +
           (darkMode ? "bg-gray-700 text-white " : "bg-white")
         }
       >
@@ -32,7 +34,7 @@ export default function CountRules({ darkMode }) {
       </div>
       <div
         className={
-          "w-full p-2  text-base mb-5 " +
+          "w-full p-2  text-sm md:text-base mb-5 " +
           (darkMode ? "bg-gray-700 text-white " : "bg-white")
         }
       >
@@ -51,7 +53,7 @@ export default function CountRules({ darkMode }) {
       </div>
       <div
         className={
-          "w-full p-2 text-base mb-5 " +
+          "w-full p-2 text-sm md:text-base mb-5 " +
           (darkMode ? "bg-gray-700 text-white " : "bg-white")
         }
       >
@@ -64,7 +66,7 @@ export default function CountRules({ darkMode }) {
       </div>
       <div
         className={
-          "w-full p-2  text-base mb-3 " +
+          "w-full p-2  text-sm md:text-base mb-3 " +
           (darkMode ? "bg-gray-700 text-white " : "bg-white")
         }
       >

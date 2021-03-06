@@ -8,6 +8,7 @@ export default function CountTable({
   text,
   price,
   codePrice,
+  setCheckBox,
 }) {
   const [displayExplanation, setDisplayExplanation] = useState(false);
   const countsOfAllWords = (text) => {
@@ -47,16 +48,16 @@ export default function CountTable({
               }
             >
               <th className="py-2">
-                <span className="text-white">タイプ</span>
+                <span className="text-xs text-white">タイプ</span>
               </th>
               <th className="w-1/5">
-                <span className="text-white">文字数</span>
+                <span className="text-xs text-white">文字数</span>
               </th>
               <th className="w-1/5">
-                <span className="text-white">文字単価</span>
+                <span className="text-xs text-white">文字単価</span>
               </th>
               <th className="w-1/5">
-                <span className="text-white">合計金額</span>
+                <span className="text-xs text-white">合計金額</span>
               </th>
             </tr>
           </thead>
@@ -69,8 +70,10 @@ export default function CountTable({
                   : "bg-white border-gray-200")
               }
             >
-              <td className="text-center py-2">文字のみ</td>
-              <td className="text-right">
+              <td className="text-xs md:text-base text-center py-2">
+                文字のみ
+              </td>
+              <td className="text-sm md:text-base text-right">
                 {(() => {
                   if (checkBox) {
                     return (
@@ -84,7 +87,7 @@ export default function CountTable({
               <td className="text-right">
                 <input
                   className={
-                    "outline-none text-right " +
+                    "text-sm md:text-base outline-none text-right " +
                     (darkMode ? "bg-gray-700" : "bg-white")
                   }
                   value={price}
@@ -96,7 +99,7 @@ export default function CountTable({
                   onChange={(e) => setPrice(e.target.value)}
                 />
               </td>
-              <td className="text-right">
+              <td className="text-sm md:text-base text-right">
                 <span>{priceOnlyWords(text)}</span>
               </td>
             </tr>
@@ -119,7 +122,7 @@ export default function CountTable({
                     <p>
                       マークダウン形式で書かれたプログラミングコードを指します。
                     </p>
-                    <div className="bg-opacity-90 bg-gray-700 p-2 mt-3">
+                    <div className="hidden md:block bg-opacity-90 bg-gray-700 p-2 mt-3">
                       ```Ruby
                       <br />
                       &lt;h2&gt;見出し2です。&lt;h2&gt;
@@ -136,7 +139,7 @@ export default function CountTable({
                     }}
                   >
                     <svg
-                      className="w-5 h-5 text-yellow-400 cursor-pointer"
+                      className="hidden md:block w-5 h-5 text-yellow-400 cursor-pointer"
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 20 20"
                       fill="currentColor"
@@ -148,10 +151,12 @@ export default function CountTable({
                       />
                     </svg>
                   </span>
-                  <span className="ml-1">コードのみ</span>
+                  <span className="text-xs md:text-base ml-1">コードのみ</span>
                 </div>
               </td>
-              <td className="text-right">{countOnlyCode(text)}</td>
+              <td className="text-sm md:text-base text-right">
+                {countOnlyCode(text)}
+              </td>
               <td className="text-right">
                 <input
                   value={codePrice}
@@ -159,7 +164,7 @@ export default function CountTable({
                   min="0"
                   max="255"
                   className={
-                    "outline-none text-right " +
+                    "text-sm md:text-base outline-none text-right " +
                     (darkMode ? "bg-gray-700" : "bg-white")
                   }
                   id="unit-code-price"
@@ -168,7 +173,9 @@ export default function CountTable({
                   onChange={(e) => setCodePrice(e.target.value)}
                 />
               </td>
-              <td className=" text-right">{priceOnlyCodes(text)}</td>
+              <td className="text-sm md:text-base text-right">
+                {priceOnlyCodes(text)}
+              </td>
             </tr>
             <tr
               className={
@@ -178,8 +185,10 @@ export default function CountTable({
                   : "bg-white border-gray-200")
               }
             >
-              <td className="text-center py-2">文字+コード</td>
-              <td className="text-right">
+              <td className="text-xs md:text-base text-center py-2">
+                文字+コード
+              </td>
+              <td className="text-sm md:text-base text-right">
                 {countsOfAllWords(text) + countOnlyCode(text)}
               </td>
               <td className="text-right"></td>

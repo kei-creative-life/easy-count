@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { countTexts, countOnlyCode, sumOfAllTitles } from "../lib/wordCounts";
+import { TABLE_HEAD_TEXT, TABLE_BODY_TEXT } from "../constant/Constant.js";
 
 export default function CountTable({
   darkMode,
@@ -49,20 +50,16 @@ export default function CountTable({
               }
             >
               <th className="py-2">
-                <span className="text-xs md:text-base text-white">タイプ</span>
+                <span className={TABLE_HEAD_TEXT}>タイプ</span>
               </th>
               <th className="w-1/5">
-                <span className="text-xs md:text-base text-white">文字数</span>
+                <span className={TABLE_HEAD_TEXT}>文字数</span>
               </th>
               <th className="w-1/5">
-                <span className="text-xs md:text-base text-white">
-                  文字単価
-                </span>
+                <span className={TABLE_HEAD_TEXT}>文字単価</span>
               </th>
               <th className="w-1/5">
-                <span className="text-xs md:text-base text-white">
-                  合計金額
-                </span>
+                <span className={TABLE_HEAD_TEXT}>合計金額</span>
               </th>
             </tr>
           </thead>
@@ -78,7 +75,7 @@ export default function CountTable({
               <td className="text-xs md:text-base text-center py-2">
                 文字のみ
               </td>
-              <td className="text-sm md:text-base text-right">
+              <td className={TABLE_BODY_TEXT}>
                 {(() => {
                   if (checkBox) {
                     return (
@@ -104,7 +101,7 @@ export default function CountTable({
                   onChange={(e) => setPrice(e.target.value)}
                 />
               </td>
-              <td className="text-sm md:text-base text-right">
+              <td className={TABLE_BODY_TEXT}>
                 <span>{priceOnlyWords(text)}</span>
               </td>
             </tr>
@@ -166,7 +163,7 @@ export default function CountTable({
                   <span className="text-xs md:text-base ml-1">コードのみ</span>
                 </div>
               </td>
-              <td className="text-sm md:text-base text-right">
+              <td className={TABLE_BODY_TEXT}>
                 {countOnlyCode(text)}
               </td>
               <td className="text-right">
@@ -185,7 +182,7 @@ export default function CountTable({
                   onChange={(e) => setCodePrice(e.target.value)}
                 />
               </td>
-              <td className="text-sm md:text-base text-right">
+              <td className={TABLE_BODY_TEXT}>
                 {priceOnlyCodes(text)}
               </td>
             </tr>
@@ -200,7 +197,7 @@ export default function CountTable({
               <td className="text-xs md:text-base text-center py-2">
                 文字+コード
               </td>
-              <td className="text-sm md:text-base text-right">
+              <td className={TABLE_BODY_TEXT}>
                 {countsOfAllWords(text) + countOnlyCode(text)}
               </td>
               <td className="text-right"></td>

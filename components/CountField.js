@@ -1,5 +1,4 @@
 import { useState, useContext } from "react";
-import { countTexts, countOnlyCode, sumOfAllTitles } from "../lib/wordCounts";
 import { darkModeContext } from "./Layout";
 import CountTable from "./CountTable";
 import CountRules from "./CountRules";

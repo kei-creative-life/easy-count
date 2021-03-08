@@ -10,7 +10,7 @@ export default function Form({ text, setText }) {
       <div>
         <h2
           className={
-            "md:text-lg " + (darkMode ? "text-white " : "text-grey-300")
+            "mb-1 md:text-lg " + (darkMode ? "text-white " : "text-grey-300")
           }
         >
           記事タイトル
@@ -25,7 +25,7 @@ export default function Form({ text, setText }) {
         />
       </div>
       <h2
-        className={"md:text-lg " + (darkMode ? "text-white " : "text-grey-300")}
+        className={"mb-1 md:text-lg " + (darkMode ? "text-white " : "text-grey-300")}
       >
         記事入力欄
       </h2>
